@@ -8,7 +8,7 @@ mongoose.connect(env.CONNECTION_STRING)
     .then(() => {
         console.log("Yup Mongoose got Connected👍")
         app.listen(port, () => {
-            console.log(`Yeah Good👍, the server is also connected to the port: ${port}`)
+            console.log(`Yeah Good👍, the server is up and runnning, connected to the port: ${port}`)
         })
     })
     .catch(console.error)
