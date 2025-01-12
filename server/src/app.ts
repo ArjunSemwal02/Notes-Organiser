@@ -5,6 +5,11 @@ import morgan from "morgan"
 import createHttpError, { isHttpError } from "http-errors"
 
 const app = express()
+const cors = require("cors")
+
+app.use(cors({
+    origin: "*",
+}))
 
 app.use(morgan("dev"))
 
