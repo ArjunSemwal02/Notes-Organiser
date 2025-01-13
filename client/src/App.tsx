@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
-import { NoteModel } from "./models/note"
-import axios from "axios"
+import { NoteModel } from "./models/Note"
+import { Note } from "./components/Note"
+
+// import axios from "axios"
 
 export default function App() {
  const [notes, setNotes] = useState<NoteModel[]>([])
@@ -10,7 +12,6 @@ export default function App() {
     try{
       const response = await fetch("http://localhost:5999/api/notes", {method: "GET"})
       const notes = await response.json()
-      // console.log(notes)
       setNotes(notes)
     }
     catch(error){
@@ -22,6 +23,19 @@ export default function App() {
  }, [])
 
 
+  return <div className="grid">
+    {notes.map(note => (
+      <Note key={note._id} note={note} />
+    ))}
+  </div>
+}
+
+
+
+
+
+
+
 // useEffect(() => {
 //   const url = 'http://localhost:5999/api/notes'
 //   axios.get(url).then((response) => {
@@ -29,10 +43,3 @@ export default function App() {
 //     // setNotes(response.data)
 //   })
 // }, [])
-
-
-  return <div>
-    {JSON.stringify(notes)}
-    {/* {notes.map(note => note._id)} */}
-  </div>
-}

@@ -1,0 +1,10 @@
+.noteCard {
+  margin: 20px;
+  color: brown;
+  display: flex;
+  align-items: center;
+}
+.noteText {
+  color: green;
+  font-size: small;
+}
