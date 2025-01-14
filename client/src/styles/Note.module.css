@@ -1,10 +1,13 @@
 .noteCard {
-  margin: 20px;
-  color: brown;
-  display: flex;
-  align-items: center;
+  padding: 5px;
+  border-radius: 0.8rem;
+  background-color: rgb(163, 88, 88);
 }
 .noteText {
-  color: green;
-  font-size: small;
+  color: rgb(0, 41, 0);
+  font-size: 1rem;
+  white-space: pre-line;
+}
+.cardBody {
+  overflow: hidden;
 }

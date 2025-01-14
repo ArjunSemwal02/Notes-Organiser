@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { NoteModel } from "./models/Note"
 import { Note } from "./components/Note"
-
-// import axios from "axios"
+import { Col, Container, Row } from "react-bootstrap"
+import Classes from "./styles/NotesPage.module.css"
 
 export default function App() {
  const [notes, setNotes] = useState<NoteModel[]>([])
@@ -23,23 +23,17 @@ export default function App() {
  }, [])
 
 
-  return <div className="grid">
-    {notes.map(note => (
-      <Note key={note._id} note={note} />
-    ))}
-  </div>
+  return (
+    <Container>
+      <Row xl={3} md={2} lg={1} className="mt-1 g-3">
+        {notes.map(note => (
+          <Col>
+            <Note key={note._id} 
+              note={note} 
+              pageStyle={Classes.note}/>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  )
 }
-
-
-
-
-
-
-
-// useEffect(() => {
-//   const url = 'http://localhost:5999/api/notes'
-//   axios.get(url).then((response) => {
-//     console.log(response.data)
-//     // setNotes(response.data)
-//   })
-// }, [])
