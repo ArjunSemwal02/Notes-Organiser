@@ -7,6 +7,7 @@ import * as NotesAPI from "./network/notesApi"
 import AddNoteModal from "./components/AddNoteModal"
 
 export default function App() {
+
  const [notes, setNotes] = useState<NoteModel[]>([])
 
  const [showAddNoteModal, setShowAddNoteModal] = useState(false)
@@ -40,7 +41,12 @@ export default function App() {
           </Col>
         ))}
       </Row>
-      { showAddNoteModal && <AddNoteModal onDismiss={() => setShowAddNoteModal(false)}/> }
+      { showAddNoteModal && <AddNoteModal 
+      onDismiss={() => setShowAddNoteModal(false)} 
+      onNoteSave={(newNote) => {
+        setNotes([...notes, newNote])
+        setShowAddNoteModal(false)
+      }}/> }
     </Container>
   )
 }

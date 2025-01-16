@@ -21,7 +21,7 @@ export interface NoteInput {
 }
 
 export async function createNotes(note: NoteInput): Promise<NoteModel> {
-    const response = await fetchAPI("/api/notes", {
+    const response = await fetchAPI("http://localhost:5999/api/notes", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

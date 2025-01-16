@@ -48,14 +48,18 @@ export default function AddNoteModal({onDismiss, onNoteSave}: AddNoteModalProps)
 
                 <Form.Group className="mb-2">
                     <Form.Label>Text</Form.Label>
-                    <Form.Control as="textarea" rows={5} type="text" placeholder="Text"
-                        {...register("text", {})}/>
+                    <Form.Control 
+                    as="textarea" 
+                    rows={5} 
+                    type="text" 
+                    placeholder="Text"
+                    {...register("text")}/>
                 </Form.Group>
             </Form>
         </Modal.Body>
 
         <Modal.Footer>
-            <Button type="submit" form="addNoteForm">Save</Button>
+            <Button type="submit" form="addNoteForm" disabled={isSubmitting}>Save</Button>
         </Modal.Footer>
     </Modal>
 }
