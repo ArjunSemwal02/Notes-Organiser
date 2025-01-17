@@ -2,13 +2,15 @@ import { Card } from "react-bootstrap"
 import { NoteModel } from "../models/Note"
 import Classes from "../styles/Note.module.css"
 import { formatTime } from "../utilities/formatTime"
+import { MdDelete } from "react-icons/md"
 
 interface NoteProps {
     note: NoteModel
     pageStyle?: string
+    onDeleteNote: (note: NoteModel) => void
 }
 
-export function Note({ note, pageStyle }: NoteProps){
+export function Note({ note, pageStyle, onDeleteNote }: NoteProps){
     const {_id, title, text, createdAt, updatedAt} = note
 
     return (
@@ -19,8 +21,14 @@ export function Note({ note, pageStyle }: NoteProps){
                             minWidth: "150px"}}>
             <Card.Body className={Classes.cardBody} 
                         style={{maskImage: "linearGradient(180deg black 80%, transparent)"}}>
-                <Card.Title style={{color: "#660000"}}>
+                <Card.Title className="d-flex align-items-center" style={{color: "#660000"}}>
                     {title}
+                    <MdDelete className="ms-auto"
+                    onClick={
+                        (e) => {
+                          onDeleteNote(note) 
+                          e.stopPropagation()
+                        }}/>
                 </Card.Title>
                 <Card.Text className={Classes.noteText} >
                     {text}

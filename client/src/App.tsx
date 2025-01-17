@@ -26,10 +26,20 @@ export default function App() {
   loadNotes()
  }, [])
 
+async function deleteNote(note: NoteModel) {
+  try {
+    await NotesAPI.deleteNote(note._id)
+    setNotes(notes.filter(existingNote => existingNote._id !== note._id))
+  } catch (error) {
+    console.error(error)
+    alert(error)
+  }
+}
 
   return (
     <Container>
-      <Button onClick={() => setShowAddNoteModal(true)}>
+      <Button className="mt-2"
+        onClick={() => setShowAddNoteModal(true)}>
         Add new note
       </Button>
       <Row xl={3} md={2} lg={1} className="mt-1 g-3">
@@ -37,7 +47,8 @@ export default function App() {
           <Col>
             <Note key={note._id} 
               note={note} 
-              pageStyle={Classes.note}/>
+              pageStyle={Classes.note}
+              onDeleteNote={deleteNote}/>
           </Col>
         ))}
       </Row>

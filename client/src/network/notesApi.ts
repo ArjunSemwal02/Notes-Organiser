@@ -30,3 +30,7 @@ export async function createNotes(note: NoteInput): Promise<NoteModel> {
     })
     return response.json()
 }
+
+export  async function deleteNote(noteId: string) {
+    await fetchAPI("http://localhost:5999/api/notes/" + noteId, { method: "DELETE"})
+}
