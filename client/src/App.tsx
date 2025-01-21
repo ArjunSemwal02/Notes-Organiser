@@ -28,7 +28,7 @@ export default function App() {
 
 async function deleteNote(note: NoteModel) {
   try {
-    await NotesAPI.deleteNote(note._id)
+    await NotesAPI.deleteNotes(note._id)
     setNotes(notes.filter(existingNote => existingNote._id !== note._id))
   } catch (error) {
     console.error(error)
